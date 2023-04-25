@@ -1,0 +1,118 @@
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Condition="(('$(Platform)' == 'iPhoneSimulator') OR $(RuntimeIdentifier.StartsWith('iossimulator')))">
+    <!-- <None Include="$(MSBuildThisFileDirectory)ios-simulator\libwhisper.coreml.dylib">
+			<Pack>true</Pack>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<TargetPath>libwhisper.coreml.dylib</TargetPath>
+		</None> -->
+    <None Include="$(MSBuildThisFileDirectory)ios-simulator\libwhisper.dylib">
+			<Pack>true</Pack>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<TargetPath>libwhisper.dylib</TargetPath>
+		</None>
+  </ItemGroup>
+  <ItemGroup Condition="(('$(Platform)' == 'iPhone') OR ('$(RuntimeIdentifier)' == 'ios') OR $(RuntimeIdentifier.StartsWith('ios-')) OR $(RuntimeIdentifier.StartsWith('ios.')))">
+     <!-- <None Include="$(MSBuildThisFileDirectory)ios-device\libwhisper.coreml.dylib">
+			<Pack>true</Pack>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<TargetPath>libwhisper.coreml.dylib</TargetPath>
+		</None> -->
+    <None Include="$(MSBuildThisFileDirectory)ios-device\libwhisper.dylib">
+			<Pack>true</Pack>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<TargetPath>libwhisper.dylib</TargetPath>
+		</None>
+  </ItemGroup>
+
+	<ItemGroup Condition="$(TargetFramework.Contains('-maccatalyst')) == true ">
+	<None Include="$(MSBuildThisFileDirectory)maccatalyst\libwhisper.dylib">
+			<Pack>true</Pack>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<TargetPath>runtime/maccatalyst/libwhisper.dylib</TargetPath>
+	</None>
+  </ItemGroup>
+  <ItemGroup Condition="$(RuntimeIdentifier.StartsWith('tvos-'))">
+     <None Include="$(MSBuildThisFileDirectory)tvos-device\libwhisper.coreml.dylib">
+			<Pack>true</Pack>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<TargetPath>libwhisper.coreml.dylib</TargetPath>
+		</None>
+    <None Include="$(MSBuildThisFileDirectory)tvos-device\libwhisper.dylib">
+			<Pack>true</Pack>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<TargetPath>libwhisper.dylib</TargetPath>
+		</None>
+  </ItemGroup>
+  <ItemGroup Condition="$(RuntimeIdentifier.StartsWith('tvossimulator-'))">
+     <!-- <None Include="$(MSBuildThisFileDirectory)tvos-simulator\libwhisper.coreml.dylib">
+			<Pack>true</Pack>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<TargetPath>libwhisper.coreml.dylib</TargetPath>
+		</None> -->
+    <None Include="$(MSBuildThisFileDirectory)tvos-simulator\libwhisper.dylib">
+			<Pack>true</Pack>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<TargetPath>libwhisper.dylib</TargetPath>
+		</None>
+  </ItemGroup>
+	<ItemGroup Condition="$(TargetFramework.Contains('-maccatalyst')) == true ">
+	<None Include="$(MSBuildThisFileDirectory)maccatalyst\libwhisper.dylib">
+			<Pack>true</Pack>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<TargetPath>libwhisper.dylib</TargetPath>
+	</None>
+  </ItemGroup>
+  <ItemGroup Condition="$(TargetFramework.Contains('-macos')) == true ">
+	<None Include="$(MSBuildThisFileDirectory)macos\libwhisper.dylib">
+			<Pack>true</Pack>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<TargetPath>runtimes/macos/libwhisper.dylib</TargetPath>
+	</None>
+	<!-- <None Include="$(MSBuildThisFileDirectory)macos\libwhisper.coreml.dylib">
+			<Pack>true</Pack>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<TargetPath>runtimes/macos/libwhisper.coreml.dylib</TargetPath>
+	</None> -->
+  	</ItemGroup>
+    <ItemGroup Condition="$(TargetFramework.Contains('-windows')) == true ">
+			<Content Include="$(MSBuildThisFileDirectory)win-x64\whisper.dll">
+			<Pack>true</Pack>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="$(MSBuildThisFileDirectory)win-x86\whisper.dll">
+			<Pack>true</Pack>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="$(MSBuildThisFileDirectory)win-arm64\whisper.dll">
+			<Pack>true</Pack>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+  </ItemGroup>
+  	<!-- <ItemGroup Condition="$(AndroidSupportedAbis.Contains('x86_64')) or $(RuntimeIdentifiers.Contains('android-x64'))">
+        <AndroidNativeLibrary Include="$(MSBuildThisFileDirectory)android-x64\whisper.so">
+            <Link>whisper-x86_64\whisper.so</Link>
+            <Abi>x86_64</Abi>
+        </AndroidNativeLibrary>
+    </ItemGroup>
+	<ItemGroup Condition="$(AndroidSupportedAbis.Contains('arm64-v8a')) or $(RuntimeIdentifiers.Contains('android-arm64'))">
+        <AndroidNativeLibrary Include="$(MSBuildThisFileDirectory)android-arm64\whisper.so">
+            <Link>whisper-armv8\whisper.so</Link>
+            <Abi>arm64-v8a</Abi>
+        </AndroidNativeLibrary>
+    </ItemGroup> -->
+</Project>
